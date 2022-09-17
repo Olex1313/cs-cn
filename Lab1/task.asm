@@ -1,46 +1,41 @@
 global _main
 
 extern _puts			; use C function to print ans
+extern _atoi
+default rel             ; MacOs linker
 
 section .data
-first_numeral 	dd 	10
-second_numeral 	dd 	10
 equal_message 	db 	"Variables are equal", 0
 first_message 	db 	"First variable is greater", 0
 second_message 	db 	"Second variable is greater", 0
 
 section .text
 _main:
-lea rax, [rel first_numeral]	; store first number from ram
-lea rbx, [rel second_numeral] 	; store second number from ram
-cmp rax, rbx			; compare numbers
+push rbx                        ; MacOs align stack
+mov rax, 12	                    ; store first number from ram
+mov rbx, 10 	                ; store second number from ram
+cmp ax, bx                      ; compare numbers
 je  both_equal			
 jg  first_greater
 jmp second_greater
 
 first_greater:
-push rbx
-lea rdi, [rel first_message]
+lea rdi, [first_message]
 call _puts
-pop rbx
 jmp exit_programm
 
 second_greater:
-push rbx
-lea rdi, [rel second_message]
+lea rdi, [second_message]
 call _puts
-pop rbx
 jmp exit_programm
 
 both_equal:
-push rbx
-lea  rdi, [rel equal_message]      	; First argument is address of message
+lea  rdi, [equal_message]      	; First argument is address of message
 call  _puts
-pop rbx
 jmp exit_programm
 
 exit_programm:
 mov rax, 0x2000001
 mov rdi, 0
 syscall
-
+pop rbx
