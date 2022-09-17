@@ -5,6 +5,8 @@ extern _atoi
 default rel             ; MacOs linker
 
 section .data
+first           dq 12
+second          dq 12
 equal_message 	db 	"Variables are equal", 0
 first_message 	db 	"First variable is greater", 0
 second_message 	db 	"Second variable is greater", 0
@@ -12,8 +14,8 @@ second_message 	db 	"Second variable is greater", 0
 section .text
 _main:
 push rbx                        ; MacOs align stack
-mov rax, 12	                    ; store first number from ram
-mov rbx, 10 	                ; store second number from ram
+mov rax, [first]	                    ; store first number from ram
+mov rbx, [second]                ; store second number from ram
 cmp ax, bx                      ; compare numbers
 je  both_equal			
 jg  first_greater
