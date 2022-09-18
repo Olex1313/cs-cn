@@ -1,12 +1,12 @@
 global _main
 
 extern _puts			; use C function to print ans
-extern _atoi
 default rel             ; MacOs linker
 
 section .data
-first           dq 12
-second          dq 12
+first           dq 20
+second          dq 123
+
 equal_message 	db 	"Variables are equal", 0
 first_message 	db 	"First variable is greater", 0
 second_message 	db 	"Second variable is greater", 0
