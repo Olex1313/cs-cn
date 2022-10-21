@@ -112,7 +112,7 @@ message:
 ```
 db 		- Define Byte 			- 1 байт
 dw 		- Define Word 			- 2 байта
-dq 		- Define Doubleword 	- 4 байта![enter image description here](https://cs.lmu.edu/~ray/images/rdx.png)
+dq 		- Define Doubleword 		- 4 байта
 dt 		- Define Quadword 		- 8 байт
 ``` 
 Можно объявить что-то побольше, но вам это не **нужно** , да и **в лабораторных работах не понадобится**
